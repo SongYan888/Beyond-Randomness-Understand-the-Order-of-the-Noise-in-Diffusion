@@ -15,7 +15,7 @@
 
 <br><br>
 
-<img src="./head.pdf" width="100%" alt="Teaser Comparison">
+<img src="main/head.pdf" width="100%" alt="Teaser Comparison">
 
 <p align="center">
   <em><strong>Figure 1:</strong> Our method is Training-Free, Universal, and Plug-and-Play. It significantly improves alignment and quality across SDXL, FLUX.1, Wan 2.1 (Video), and TRELLIS (3D).</em>
