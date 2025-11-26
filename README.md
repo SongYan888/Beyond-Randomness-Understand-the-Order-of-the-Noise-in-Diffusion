@@ -68,39 +68,6 @@ $$
 
 ---
 
-## 🖼️ Gallery
-
-[cite_start]Our method works across **Image**, **Video**, and **3D** generation tasks [cite: 1, 271-278].
-
-<table align="center">
-  <tr>
-    <th align="center">Model</th>
-    <th align="center">Standard</th>
-    <th align="center">Ours</th>
-    <th align="center">Prompt</th>
-  </tr>
-  <tr>
-    <td align="center"><strong>FLUX.1</strong><br>(Image)</td>
-    <td align="center"><img src="assets/flux_std.png" width="200px"></td>
-    <td align="center"><img src="assets/flux_ours.png" width="200px"></td>
-    <td align="center">"A blue colored pizza."<br></td>
-  </tr>
-  <tr>
-    <td align="center"><strong>Wan 2.1</strong><br>(Video)</td>
-    <td align="center"><img src="assets/wan_std.png" width="200px"></td>
-    <td align="center"><img src="assets/wan_ours.png" width="200px"></td>
-    <td align="center">"A storefront with 'CVPR' written on it."<br></td>
-  </tr>
-  <tr>
-    <td align="center"><strong>TRELLIS</strong><br>(3D)</td>
-    <td align="center"><img src="assets/trellis_std.png" width="200px"></td>
-    <td align="center"><img src="assets/trellis_ours.png" width="200px"></td>
-    <td align="center">"A claw hammer with a metallic grey hammer head..."<br></td>
-  </tr>
-</table>
-
----
-
 ## 💻 Usage
 
 Our method involves no training. You only need to modify the inference pipeline.
