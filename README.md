@@ -1,11 +1,3 @@
-[cite\_start]Based on the research paper **"Beyond Randomness: Understand the Order of the Noise in Diffusion"**[cite: 1], here is a structured, aesthetic, and publication-ready GitHub `README.md`.
-
-I have designed this to highlight the "plug-and-play" nature of the method and its theoretical elegance.
-
------
-
-# README.md
-
 \<div align="center"\>
 
 \<h1\>Beyond Randomness: Understand the Order of the Noise in Diffusion\</h1\>
