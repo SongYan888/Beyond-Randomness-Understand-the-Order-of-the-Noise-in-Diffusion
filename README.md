@@ -1,145 +1,111 @@
-\<div align="center"\>
+<div align="center">
 
-\<h1\>Beyond Randomness: Understand the Order of the Noise in Diffusion\</h1\>
+<h1>Beyond Randomness: Understand the Order of the Noise in Diffusion</h1>
 
-\<a href='[https://arxiv.org/abs/2406.xxxxx](https://www.google.com/search?q=https://arxiv.org/abs/2406.xxxxx)'\>\<img src='[https://img.shields.io/badge/Paper-ArXiv-red](https://www.google.com/search?q=https://img.shields.io/badge/Paper-ArXiv-red)'\>\</a\>
-\<a href='[https://huggingface.co/spaces](https://huggingface.co/spaces)'\>\<img src='[https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-orange](https://www.google.com/search?q=https://img.shields.io/badge/%25F0%259F%25A4%2597%2520Hugging%2520Face-Demo-orange)'\>\</a\>
-\<a href='\#'\>\<img src='[https://img.shields.io/badge/Project-Page-green](https://www.google.com/search?q=https://img.shields.io/badge/Project-Page-green)'\>\</a\>
+<a href='https://arxiv.org/abs/2406.xxxxx'><img src='https://img.shields.io/badge/Paper-ArXiv-B31B1B.svg'></a>
+<a href='https://huggingface.co/spaces'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-FFD21E'></a>
+<a href='#'><img src='https://img.shields.io/badge/Project-Page-20B2AA'></a>
+<a href='#'><img src='https://img.shields.io/badge/License-MIT-blue'></a>
 
-**Yunwei Lan**¹,² $^*$ · **Tao Zhang**³ · **Wei Zhai**¹,² · **Zheng-Jun Zha**² · **Yunwei Lan**¹,²
+**Yunwei Lan**$^{1,2}$, **Tao Zhang**$^{3}$, **Wei Zhai**$^{1,2}$, **Zheng-Jun Zha**$^{2}$
 
-¹Xi’an High-tech Research Institute · ²USTC · ³HUST
+<small>
+$^1$ Xi’an High-tech Research Institute &nbsp;&nbsp; $^2$ USTC &nbsp;&nbsp; $^3$ HUST
+</small>
 
-\<p align="center"\>
-\<img src="assets/teaser\_fig1.png" width="95%" alt="Teaser Comparison"\>
-\</p\>
-[cite\_start]\<em\>Figure 1: Our method significantly improves semantic alignment and generation quality across SDXL, FLUX.1, Wan 2.1 (Video), and TRELLIS (3D) without any training. [cite: 1, 12-25]\</em\>
+<br><br>
 
-\</div\>
+<img src="assets/teaser_fig1.png" width="100%" alt="Teaser Comparison">
 
------
+<p align="center">
+  <em><strong>Figure 1:</strong> Our method is Training-Free, Universal, and Plug-and-Play. [cite_start]It significantly improves alignment and quality across SDXL, FLUX.1, Wan 2.1 (Video), and TRELLIS (3D). [cite: 1, 12, 18, 25, 35]</em>
+</p>
+
+</div>
+
+---
+
+## 🔥 News
+- **[2024.11.26]** Code released! We support **SDXL**, **FLUX.1**, **Wan 2.1**, and **TRELLIS**.
+- **[2024.06.XX]** Paper submitted to ArXiv.
+
+---
 
 ## 📖 Abstract
 
-In text-driven content generation (T2C) diffusion models, the initial noise is typically treated as a random element contributing solely to diversity. [cite\_start]**Contrary to this view, we reveal that initial noise contains strong, analyzable semantic patterns.** [cite: 48, 49]
+[cite_start]In text-driven content generation (T2C) diffusion models, the initial noise is typically characterized as a random element contributing solely to diversity[cite: 48]. [cite_start]**Contrary to this view, this paper reveals that beneath the random surface of noise lies strong analyzable patterns**[cite: 49].
 
-We identify that random noise inherently encodes rich semantic information. If mismatched with the prompt, this "noise semantic" leads to artifacts and misalignment. To solve this, we propose a **Training-Free** and **Universal** two-step process:
+[cite_start]We identify that random noise inherently encodes rich semantic information[cite: 52]. If mismatched with the prompt, this "noise semantic" leads to artifacts. We propose a simple, **Training-Free**, and **Universal** two-step process:
 
-1.  [cite\_start]**Semantic Erasure:** Diluting unwanted semantics via Noise Latent Normalization (NLN). [cite: 53, 216]
-2.  [cite\_start]**Semantic Injection:** Injecting prompt-aligned semantics using the pre-trained model itself via Temporal Prediction Weighting (TPW). [cite: 53, 228]
+1.  [cite_start]**Semantic Erasure:** Diluting unwanted semantics via *Noise Latent Normalization (NLN)*[cite: 53, 216].
+2.  [cite_start]**Semantic Injection:** Injecting prompt-aligned semantics using the pre-trained model itself via *Temporal Prediction Weighting (TPW)*[cite: 53, 229].
 
-[cite\_start]This method works on **any diffusion architecture** (DiT, UNet, Flow Matching) for Image, Video, and 3D generation. [cite: 45]
-
------
-
-## 🚀 Key Features
-
-  * **⚡ Training-Free:** No fine-tuning or LoRAs required. [cite\_start]Works directly with off-the-shelf checkpoints. [cite: 44]
-  * [cite\_start]**🌐 Universal Compatibility:** Tested successfully on **SDXL** (UNet), **FLUX.1** (DiT/Flow), **Wan 2.1** (Video), and **TRELLIS** (3D). [cite: 54]
-  * **🛠️ Plug-and-Play:** A simple modification to the sampling procedure that can be integrated into existing pipelines (e.g., Diffusers, ComfyUI).
-  * [cite\_start]**📈 Performance:** Consistently outperforms standard pipelines in semantic alignment (VQAScore, PickScore) and visual fidelity. [cite: 281]
-
------
+---
 
 ## 🧠 Methodology
 
-Our approach leverages Information Theory and the equivalence between the denoising process and semantic injection.
+[cite_start]Our method is grounded in the theoretical equivalence between the **denoising process** and **semantic injection**[cite: 195].
 
-### 1\. Semantic Erasure (NLN)
+### 1. Semantic Erasure (NLN)
+Random noise often carries "idiosyncratic" semantics. We propose **Noise Latent Normalization (NLN)** to aggregate $n$ i.i.d. noise samples and re-standardize them. [cite_start]This cancels out directions orthogonal to the summation axis (the "private" semantics) while preserving the Gaussian distribution[cite: 218, 225].
 
-Random noise often carries "idiosyncratic" semantics that conflict with your prompt. [cite\_start]By averaging multiple independent noise samples and re-normalizing, we cancel out these specific directions while maintaining a valid Gaussian distribution. [cite: 218, 225]
+$$
+\overline{s}_{t} = \frac{1}{\sqrt{n}} \sum_{i=1}^{n} z_{t}^{i}, \quad \text{where } z_{t}^{i} \sim \mathcal{N}(0, I)
+$$
 
-$$\overline{s}_{t} = \frac{1}{\sqrt{n}} \sum_{i=1}^{n} z_{t}^{i}, \quad \text{where } z_{t}^{i} \sim \mathcal{N}(0, I)$$
+### 2. Semantic Injection (TPW)
+We utilize the pre-trained model to inject helpful semantics via **Temporal Prediction Weighting (TPW)**. [cite_start]This leverages the phase-dependent nature of diffusion: early steps for layout, middle for structure, and late for details[cite: 211, 229].
 
-### 2\. Semantic Injection (TPW)
+$$
+\epsilon_{agg} = \frac{\sum_{k=1}^{K} w_{k} \epsilon_{\theta}(z_{T}, t_{k}, y)}{\sqrt{\sum_{k=1}^{K} w_{k}^{2}}}
+$$
 
-Once the noise is "clean," we inject the *correct* semantics. [cite\_start]We use the model's own predictions at key timesteps to guide the initial noise toward the target manifold. [cite: 228, 407]
+### 3. Final Adjustment
+[cite_start]We blend the purified noise with the aggregated semantics[cite: 244]:
 
-$$\epsilon_{adj} = \frac{z_{T} + \delta(t) \epsilon_{agg}}{\sqrt{1+\delta(t)^2}}$$
+$$
+\epsilon_{adj} = \frac{z_{T} + \delta(t) \epsilon_{agg}}{\sqrt{1+\delta(t)^2}}
+$$
 
-Where $\epsilon_{agg}$ is the weighted aggregation of predicted noise/velocity at early, middle, and late stages.
+---
 
-\<details\>
-\<summary\>\<strong\>Click to see the Algorithm\</strong\>\</summary\>
+## 🖼️ Gallery
 
-[cite\_start]**Algorithm 1: Semantic Erasure and Injection** [cite: 718]
+Our method works across **Image**, **Video**, and **3D** generation tasks.
 
-1.  **Stage 1: Semantic Erasure**
-      * Sample $n$ independent noise vectors.
-      * Compute purified noise $z_T$ via summation and normalization.
-2.  **Stage 2: Semantic Injection**
-      * Select $K$ key timesteps.
-      * For each timestep, predict noise/velocity using the model and prompt.
-      * Aggregate predictions with weights $w_k$.
-3.  **Stage 3: Noise Adjustment**
-      * Mix purified noise $z_T$ with aggregated semantics $\epsilon_{agg}$ controlled by $\delta$.
-4.  **Stage 4: Final Generation**
-      * Run standard sampling using the adjusted noise.
+<table align="center">
+  <tr>
+    <th align="center">Model</th>
+    <th align="center">Standard</th>
+    <th align="center">Ours</th>
+    <th align="center">Prompt</th>
+  </tr>
+  <tr>
+    <td align="center"><strong>FLUX.1</strong><br>(Image)</td>
+    <td align="center"><img src="assets/flux_std.png" width="200px"></td>
+    <td align="center"><img src="assets/flux_ours.png" width="200px"></td>
+    [cite_start]<td align="center">"A blue colored pizza."<br>[cite: 18, 24]</td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Wan 2.1</strong><br>(Video)</td>
+    <td align="center"><img src="assets/wan_std.png" width="200px"></td>
+    <td align="center"><img src="assets/wan_ours.png" width="200px"></td>
+    <td align="center">"A storefront with 'CVPR' written on it."<br>[cite: 25, 35]</td>
+  </tr>
+  <tr>
+    <td align="center"><strong>TRELLIS</strong><br>(3D)</td>
+    <td align="center"><img src="assets/trellis_std.png" width="200px"></td>
+    <td align="center"><img src="assets/trellis_ours.png" width="200px"></td>
+    <td align="center">"A claw hammer with a metallic grey hammer head..."<br>[cite: 35, 43]</td>
+  </tr>
+</table>
 
-\</details\>
-
------
-
-## 🖼️ Gallery & Comparisons
-
-### Text-to-Image (FLUX.1 & SDXL)
-
-> **Prompt:** "A blue colored pizza."
-> *Standard:* Generates a normal pizza or slight tint.
-> [cite\_start]*Ours:* Generates a distinctly blue pizza with correct textures. [cite: 18, 24]
-
-### Text-to-Video (Wan 2.1)
-
-> **Prompt:** "A storefront with 'CVPR' written on it."
-> *Standard:* Often fails text rendering or structural coherence.
-> [cite\_start]*Ours:* Clear, legible text and stable architecture. [cite: 25, 35]
-
-### Text-to-3D (TRELLIS)
-
-> **Prompt:** "A claw hammer with a metallic grey hammer head..."
-> *Standard:* Missing textures or incorrect geometry.
-> [cite\_start]*Ours:* High fidelity geometry and material separation. [cite: 35, 43]
-
------
+---
 
 ## 💻 Usage
 
-*(Pseudo-code based on the paper's logic)*
+Our method involves no training. You only need to modify the inference pipeline.
 
-```python
-coming soon
-```
-
------
-
-## 📊 Quantitative Results
-
-[cite\_start]Our method consistently achieves higher scores on standard benchmarks. [cite: 281]
-
-| Benchmark | Model | Method | PickScore 🏆 | ImageReward 🖼️ |
-| :--- | :--- | :--- | :--- | :--- |
-| **Pick-a-Pic** | SDXL | Standard | 17.0490 | -1.9705 |
-| | | **Ours** | **17.0520** | **-1.9662** |
-| **DrawBench** | FLUX.1 | Standard | 17.2748 | -2.0509 |
-| | | **Ours** | **17.2871** | **-2.0380** |
-
------
-
-## 📝 Citation
-
-If you find this work useful, please cite our paper:
-
-```bibtex
-@article{lan2024beyond,
-  title={Beyond Randomness: Understand the Order of the Noise in Diffusion},
-  author={Lan, Yunwei and Zhang, Tao and Zhai, Wei and Zha, Zheng-Jun},
-  journal={Xi’an High-tech Research Institute & USTC},
-  year={2024}
-}
-```
-
------
-
-\<p align="center"\>
-[cite\_start]\<i\>"Noise not only contains rich semantic information, but also allows for the erasure of unwanted semantics."\</i\> [cite: 52]
-\</p\>
+### Requirements
+```bash
+pip install torch diffusers transformers
