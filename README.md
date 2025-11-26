@@ -26,8 +26,7 @@
 ---
 
 ## 🔥 News
-- **[2024.11.26]** Code released! We support **SDXL**, **FLUX.1**, **Wan 2.1**, and **TRELLIS**.
-- **[2024.06.XX]** Paper submitted to ArXiv.
+- **[2024.11]** Paper submitted to ArXiv.
 
 ---
 
