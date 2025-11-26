@@ -7,7 +7,7 @@
 <a href='#'><img src='https://img.shields.io/badge/Project-Page-20B2AA'></a>
 <a href='#'><img src='https://img.shields.io/badge/License-MIT-blue'></a>
 
-**Song Yan**$^{2,1}$, **Min Li**$^{*,1}$, **Bi Xinliang**$^{1}$, **Jian Yang**$^{2}$, **Yusen Zhang**$^{1}$, **Guanye Xiong**$^{1}$,<br> **Yunwei Lan**$^{1,2}$, **Tao Zhang**$^{3}$, **Wei Zhai**$^{*,2}$, **Zheng-Jun Zha**$^{2}$
+**Song Yan**$^{2,1}$, **Min Li**$^{\*,1}$, **Bi Xinliang**$^{1}$, **Jian Yang**$^{2}$, **Yusen Zhang**$^{1}$, **Guanye Xiong**$^{1}$,<br> **Yunwei Lan**$^{1,2}$, **Tao Zhang**$^{3}$, **Wei Zhai**$^{\*,2}$, **Zheng-Jun Zha**$^{2}$
 
 <small>
 1 Xi'an High-tech Research Institute &nbsp;&nbsp; 2 USTC &nbsp;&nbsp; 3 HUST
